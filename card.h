@@ -4,6 +4,7 @@
 #ifndef CARD_H
 #define CARD_H
 
+#include "STD_TYPS.h"
 typedef struct ST_cardData_t
 {
 	uint8_t cardHolderName[25];

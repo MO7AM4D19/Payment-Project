@@ -29,6 +29,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{706DBB
 		server.h = server.h
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LIB", "LIB", "{F49BEC8A-4AC9-4219-9CB6-457AD5857BC4}"
+	ProjectSection(SolutionItems) = preProject
+		STD_TYPS.h = STD_TYPS.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
