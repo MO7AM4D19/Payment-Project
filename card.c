@@ -47,7 +47,7 @@ EN_cardError_t getCardExpiryDate(ST_cardData_t* cardData)
 EN_cardError_t getCardPAN(ST_cardData_t* cardData)
 {
 	EN_cardError_t ErrorState = OK;
-	uint8_t PANSize = 0,LuhnSum = 0,Temp;
+	uint8_t PANSize = 0;
 	printf("Please Enter the PAN number: ");
 	scanf(" %s", cardData->primaryAccountNumber);
 	for (PANSize = 0; PANSize<19 ; PANSize++)
@@ -65,18 +65,4 @@ EN_cardError_t getCardPAN(ST_cardData_t* cardData)
 	{
 		ErrorState = WRONG_PAN;
 	}
-	for (int i = PANSize; i >= 0; i-=2)
-	{
-		Temp = cardData->primaryAccountNumber[i] * 2;
-		if (Temp > 9)
-		{
-			LuhnSum += (Temp % 10) + 1;
-		}
-		LuhnSum += Temp;
-	}
-	if (LuhnSum % 10 != 0)
-	{
-		ErrorState = WRONG_PAN;
-	}
-	return ErrorState;
 }
