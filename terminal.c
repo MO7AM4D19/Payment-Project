@@ -1,7 +1,7 @@
 /*Auther: Mohamed Khalid Anis*/
 /*Date: 15/10/2022*/
 #include "terminal.h"
-#include "stdio.h"
+#include <stdio.h>
 EN_terminalError_t getTransactionDate(ST_terminalData_t* termData)
 {
 	EN_terminalError_t ErrorState = OK;
