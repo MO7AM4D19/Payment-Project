@@ -87,6 +87,10 @@ EN_serverError_t isAmountAvailable(ST_terminalData_t* termData, ST_accountsDB_t*
 	{
 		ErrorState = LOW_BALANCE;
 	}
+	else
+	{
+		accountRefrence->balance -= termData->transAmount;
+	}
 	return ErrorState;
 }
 
