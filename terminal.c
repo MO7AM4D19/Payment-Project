@@ -6,7 +6,7 @@ EN_terminalError_t getTransactionDate(ST_terminalData_t* termData)
 {
 	EN_terminalError_t ErrorState = OK;
 	printf("please enter The current Date: ");
-	scanf(" %s", termData->transactionDate);
+	gets(termData->transactionDate);
 	if (termData->transactionDate[10] != '\0' || termData->transactionDate[2] != '/' || termData->transactionDate[5] != '/')
 	{
 		ErrorState = WRONG_DATE;
@@ -17,7 +17,7 @@ EN_terminalError_t getTransactionDate(ST_terminalData_t* termData)
 EN_terminalError_t isCardExpired(ST_cardData_t cardData, ST_terminalData_t termData)
 {
 	EN_cardError_t ErrorState = OK;
-	uint8_t TerminalYear, CardYear,TerminalMonth,CardMonth;
+	uint8_t_ TerminalYear, CardYear,TerminalMonth,CardMonth;
 	TerminalYear = termData.transactionDate[6]*1000 + termData.transactionDate[7] * 100 + termData.transactionDate[8] * 10 + termData.transactionDate[9];
 	CardYear = cardData.cardExpirationDate[3] * 10 + cardData.cardExpirationDate[4] + 2000;
 	if (TerminalYear > CardYear)
@@ -39,7 +39,7 @@ EN_terminalError_t isCardExpired(ST_cardData_t cardData, ST_terminalData_t termD
 EN_terminalError_t isValidCardPAN(ST_cardData_t* cardData)
 {
 	EN_terminalError_t ErrorState = OK;
-	uint8_t LuhnSum = 0, Temp;
+	uint8_t_ LuhnSum = 0, Temp;
 	for (int i = 19; i >= 0; i -= 2)
 	{
 		Temp = cardData->primaryAccountNumber[i] * 2;

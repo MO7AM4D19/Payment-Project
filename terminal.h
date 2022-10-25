@@ -9,7 +9,7 @@ typedef struct ST_terminalData_t
 {
 	float transAmount;
 	float maxTransAmount;
-	uint8_t transactionDate[11];
+	uint8_t_ transactionDate[11];
 }ST_terminalData_t;
 
 typedef enum EN_terminalError_t

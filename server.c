@@ -6,14 +6,9 @@
 #include "STD_TYPS.h"
 #include <stdio.h>
 
-ST_accountsDB_t accountsDB[255];
-accountsDB[0] = { 15000.00,RUNNING,"26177640193050702575" };
-accountsDB[1] = { 13000.00,RUNNING,"64761933564311060039" };
-accountsDB[2] = { 11000.00,RUNNING,"95460800081779662307" };
-accountsDB[3] = { 7000.00,BLOCKED,"94578645558431674696" };
-accountsDB[4] = { 3000.00,RUNNING,"02106280196170026652" };
+ST_accountsDB_t accountsDB[255] = {{ 15000.00,RUNNING,"0361722444373622383" },{ 13000.00,RUNNING,"6262611783938736990" },{ 11000.00,RUNNING,"9039025529153147531" },{ 7000.00,BLOCKED,"5785464868997240940" },{ 3000.00,RUNNING,"2156010875673815628" }};
 ST_transaction_t TransactionsDB[255] = { 0 };
-uint8_t Top = 0;
+uint8_t_ Top = 0;
 EN_transStat_t ErrorState_G;
 
 EN_transStat_t recieveTransactionData(ST_transaction_t* transData)
@@ -42,18 +37,18 @@ EN_transStat_t recieveTransactionData(ST_transaction_t* transData)
 	{
 		ErrorState_G = INTERNAL_SERVER_ERROR;
 	}
-	return ErrorState;
+	return ErrorState_G;
 }
 
 EN_serverError_t isValidAccount(ST_cardData_t* cardData, ST_accountsDB_t* accountRefrence)
 {
-	
+	uint8_t_ isEqual = 1;
 	EN_serverError_t ErrorState = ACCOUNT_NOT_FOUND;
 	for (int i = 0; i < 255; i++)
 	{
 		for (int j = 0; j < 20; j++)
 		{
-			uint8_t isEqual = 1;
+			isEqual = 1;
 			if (cardData->primaryAccountNumber[j] != accountsDB[i].primaryAccountNumber[j])
 			{
 				isEqual = 0;
@@ -63,7 +58,7 @@ EN_serverError_t isValidAccount(ST_cardData_t* cardData, ST_accountsDB_t* accoun
 		if (isEqual == 1)
 		{
 			accountRefrence = &accountsDB[i];
-			ErrorState = SERVER_OK
+			ErrorState = SERVER_OK;
 			break;
 		}
 	}
@@ -115,7 +110,7 @@ EN_serverError_t saveTransaction(ST_transaction_t* transData)
 
 void listSavedTransactions(void)
 {
-	for (int i = 0; TransactionsDB[i] != 0; i++)
+	for (int i = 0; TransactionsDB[i].transactionSequenceNumber != 0; i++)
 	{
 		printf("#############################################\n");
 		printf("transaction Sequence Number: %d\n", TransactionsDB[i].transactionSequenceNumber);

@@ -19,7 +19,7 @@ void appStart(void)
 		ST_terminalData_t Terminal;
 		ST_transaction_t Transaction;
 		ST_accountsDB_t* Account;
-		setMaxAmount(&Terminal);
+		//setMaxAmount(&Terminal);
 		getCardHolderName(&Card);
 		getCardExpiryDate(&Card);
 		getCardPAN(&Card);
@@ -37,7 +37,7 @@ void appStart(void)
 		getTransactionAmount(&Terminal);
 		if (isBelowMaxAmount(&Terminal) == EXCEED_MAX_AMOUNT)
 		{
-			printf("The transaction is declined, Exceeded The max amount")
+			printf("The transaction is declined, Exceeded The max amount");
 				continue;
 		}
 		recieveTransactionData(&Transaction);
@@ -46,12 +46,12 @@ void appStart(void)
 			printf("The transaction is declined, The Account couldn't be found");
 			continue;
 		}
-		if (isBlockedAccount(&Account) == BLOCKED_ACCOUNT)
+		if (isBlockedAccount(Account) == BLOCKED_ACCOUNT)
 		{
 			printf("The transaction is declined, The account is blocked");
 			continue;
 		}
-		if (isAmountAvailable(&Terminal, &Account) == LOW_BALANCE)
+		if (isAmountAvailable(&Terminal,Account) == LOW_BALANCE)
 		{
 			printf("The transaction is declined, Low balance");
 			continue;

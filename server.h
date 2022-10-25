@@ -15,7 +15,7 @@ typedef struct ST_transaction_t
     ST_cardData_t cardHolderData;
     ST_terminalData_t terminalData;
     EN_transStat_t transState;
-    uint32_t transactionSequenceNumber;
+    uint32_t_ transactionSequenceNumber;
 }ST_transaction_t;
 
 typedef enum EN_serverError_t
@@ -33,7 +33,7 @@ typedef struct ST_accountsDB_t
 {
     float balance;
     EN_accountState_t state;
-    uint8_t primaryAccountNumber[20];
+    uint8_t_ primaryAccountNumber[20];
 }ST_accountsDB_t;
 
 EN_transStat_t recieveTransactionData(ST_transaction_t* transData);
