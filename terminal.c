@@ -49,10 +49,10 @@ EN_terminalError_t isValidCardPAN(ST_cardData_t* cardData)
 		}
 		LuhnSum += Temp;
 	}
-	if (LuhnSum % 10 != 0)
+	/*if (LuhnSum % 10 != 0)
 	{
 		ErrorState = WRONG_PAN;
-	}
+	}*/
 	return ErrorState;
 }
 
